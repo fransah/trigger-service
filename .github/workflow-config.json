@@ -1,0 +1,35 @@
+{
+  "java-version": "11",
+  "maven-version": "3.6.3",
+  "channels": {
+    "team": "team-devices-and-apps-notifications"
+  },
+  "deploy": {
+    "pull-request": true,
+    "release": true,
+    "default-cluster": "logistics_tst",
+    "use-feature-namespaces": true
+  },
+  "verify": [
+    {
+      "profile": "component",
+      "runs-on": "ubuntu-latest"
+    },
+    {
+      "profile": "owasp",
+      "runs-on": "ubuntu-latest"
+    },
+    {
+      "profile": "mutation-incremental",
+      "runs-on": "ubuntu-latest"
+    }
+  ],
+  "post-deploy": [],
+  "post-release": [
+    {
+      "profile": "mutation-baseline",
+      "runs-on": "ubuntu-latest",
+      "push": true
+    }
+  ]
+}
