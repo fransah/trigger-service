@@ -1,4 +1,4 @@
-name: Trigger All Comonent Tests
+name: Trigger All Component Tests
 
 on:
   #push:
