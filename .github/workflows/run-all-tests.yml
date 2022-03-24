@@ -1,10 +1,10 @@
 name: Remote Dispatch All Tests Initiator
 
 on:
-  push:
+  #push:
   schedule:
     - cron: '0 12 * * *'
-  repository_dispatch:
+  #repository_dispatch:
   workflow_dispatch:
 
 jobs:
