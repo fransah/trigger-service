@@ -24,3 +24,4 @@ jobs:
           token: ${{ secrets.TRIGGER_TEST }}
           repository: ${{ matrix.repo }}
           event-type: do-component-test
+          client-payload: '{ "repository": "$GITHUB_REPOSITORY" }'
