@@ -1,0 +1,26 @@
+name: Remote Dispatch All Tests Initiator
+
+on:
+  push:
+  schedule:
+    - cron: '0 12 * * *'
+  repository_dispatch:
+  workflow_dispatch:
+
+jobs:
+#  build:
+# Main workflow job that builds, tests, etc.
+
+  dispatch:
+#    needs: build
+    strategy:
+      matrix:
+        repo: ['fransah/trigger1', 'fransah/trigger2']
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.TRIGGER_TEST }}
+          repository: ${{ matrix.repo }}
+          event-type: do-component-test
