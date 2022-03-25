@@ -10,10 +10,10 @@ jobs:
         if: github.event.action == 'my-result'
         run: |
           echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'"
-          echo "Payload:  '${{ github.event.client_payload}}'"
+          echo "Payload:  '${{ toJSON(github.event.client_payload) }}'"
       - name: Handle Results Tests
         if: github.event.action == 'my-result'
         run: |
           echo "Test result received"
           echo "Repository '${{ github.event.client_payload.repository }}' "
-          echo "Result: '${{ github.event.client_payload.result }}'"
+          if(github.event.client_payload.result == 'failure') exit 1
