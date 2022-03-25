@@ -17,9 +17,9 @@ jobs:
           echo "Test result received"
           echo "Repository '${{ github.event.client_payload.repository }}' "
           echo "Tryout  ${{github.event.client_payload.result}}"
-          if ["failure" = ${{github.event.client_payload.result}}]; then
-            echo "Result: '${{github.event.client_payload.result}}'"
+          if [success != ${{github.event.client_payload.result}}]; then
+            echo "Test Failed"
             exit 1
           else
-            echo "Result: '${{github.event.client_payload.result}}'"
+            echo "Test passed"
           fi
