@@ -16,7 +16,8 @@ jobs:
         run: |
           echo "Test result received"
           echo "Repository '${{ github.event.client_payload.repository }}' "
-          if [github.event.client_payload.result == 'failure']
-          then 
+          if [${{github.event.client_payload.result}} == 'failure']
+          then
+            echo "No Success"
             exit 1
           fi
