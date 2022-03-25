@@ -18,5 +18,5 @@ jobs:
           echo "Repository: '${{ github.event.client_payload.repository }}' "
           echo "Error results: '${{ github.event.client_payload.resultUrl }}' "
       - name: Handle results failures
-        if: github.event.action == 'my-result' AND !${{github.event.client_payload.result == success}}
+        if: github.event.action == 'my-result' AND github.event.client_payload.result != 'success'
         run:  exit 1
