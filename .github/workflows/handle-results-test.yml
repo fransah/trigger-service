@@ -16,11 +16,10 @@ jobs:
         run: |
           echo "Test result received"
           echo "Repository '${{ github.event.client_payload.repository }}' "
-          result = ${{github.event.client_payload.result}}
-          echo "Tryout  '$result'"
-          if ["$result" == "failure"]; then
-            echo "Result: '$result'"
+          echo "Tryout  '${{github.event.client_payload.result}}'"
+          if ["${{github.event.client_payload.result}}" == "failure"]; then
+            echo "Result: '${{github.event.client_payload.result}}'"
             exit 1
           else
-            echo "Result: '$result'"
+            echo "Result: '${{github.event.client_payload.result}}'"
           fi
