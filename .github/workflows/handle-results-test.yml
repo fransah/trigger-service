@@ -1,6 +1,8 @@
 name: Result for tests
 
-on: [repository_dispatch]
+on:
+  repository_dispatch:
+    types: [ my-result ]
 
 jobs:
   my-result:

@@ -1,6 +1,8 @@
 name: Results for Search
 
-on: [repository_dispatch]
+on:
+  repository_dispatch:
+    types: [my-search-result]
 
 jobs:
   my-search-result:
