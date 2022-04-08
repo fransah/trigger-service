@@ -1,0 +1,19 @@
+name: Search Results
+
+on: [repository_dispatch]
+
+jobs:
+  my-search-result:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Event Information
+        if: github.event.action == 'my-search-result'
+        run: |
+          echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'"
+          echo "Payload:  '${{ toJSON(github.event.client_payload) }}'"
+      - name: Display Search Results
+        if: github.event.action == 'my-search-result'
+        run: |
+          echo "Search results received for:"
+          echo "Repository: '${{ github.event.client_payload.repository }}' "
+          echo "Found results: '${{ github.event.client_payload.foundResults }}' "

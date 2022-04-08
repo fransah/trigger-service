@@ -1,0 +1,27 @@
+name: Trigger Tests
+
+on:
+  #push:
+  schedule:
+    - cron: '0 12 * * *'
+  #repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      search:
+        description: 'Your search term'
+        required: true
+
+jobs:
+  dispatch:
+    strategy:
+      matrix:
+        repo: ['fransah/trigger1']
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Search a Repo
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.TRIGGER_TEST1 }}
+          repository: ${{ matrix.repo }}
+          event-type: do-search-repo
+          client-payload: '{ "repository": "${{github.repository}}", "search-string": "${{ github.event.inputs.search }}" }'
