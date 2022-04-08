@@ -1,4 +1,4 @@
-name: Search Repository for String
+name: Trigger Search for String
 
 on:
   #push:

@@ -1,4 +1,4 @@
-name: Search Results
+name: Results for Search
 
 on: [repository_dispatch]
 
