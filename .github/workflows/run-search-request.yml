@@ -15,7 +15,7 @@ jobs:
   dispatch:
     strategy:
       matrix:
-        repo: ['fransah/trigger1']
+        repo: ['fransah/trigger1', 'fransah/trigger2']
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Search a Repo
