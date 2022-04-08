@@ -17,6 +17,7 @@ jobs:
       matrix:
         repo: ['fransah/trigger1']
     runs-on: ubuntu-latest
+    search:${{ github.event.inputs.search }}
     steps:
       - name: Trigger Search a Repo
         uses: peter-evans/repository-dispatch@v2
