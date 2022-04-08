@@ -9,16 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Event Information
-        if: github.event.action == 'my-result'
         run: |
           echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'"
           echo "Payload:  '${{ toJSON(github.event.client_payload) }}'"
+
       - name: Display Result
-        if: github.event.action == 'my-result'
         run: |
           echo "Test result received"
           echo "Repository: '${{ github.event.client_payload.repository }}' "
           echo "Error results: '${{ github.event.client_payload.resultUrl }}' "
+
       - name: Handle results failures
         if: github.event.action == 'my-result' && github.event.client_payload.result != 'success'
         run:  exit 1
