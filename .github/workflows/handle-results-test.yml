@@ -6,6 +6,7 @@ on:
 
 jobs:
   my-result:
+    name: "Search result for: ${{ github.event.client_payload.search-string }}"
     runs-on: ubuntu-latest
     steps:
       - name: Event Information
