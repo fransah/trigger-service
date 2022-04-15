@@ -6,6 +6,16 @@ on:
     - cron: '0 12 * * *'
   #repository_dispatch:
   workflow_dispatch:
+    inputs:
+      test-type:
+        type: choice
+        description: Which tests
+        default: component/integration
+        options:
+          - all
+          - junit
+          - component/integration
+        required: true
 
 jobs:
   dispatch:
@@ -20,4 +30,4 @@ jobs:
           token: ${{ secrets.TRIGGER_TEST1 }}
           repository: ${{ matrix.repo }}
           event-type: do-component-test
-          client-payload: '{ "repository": "${{github.repository}}" }'
+          client-payload: '{ "repository": "${{github.repository}}", "type-test": "${{ github.event.inputs.test-type }}"  }'
