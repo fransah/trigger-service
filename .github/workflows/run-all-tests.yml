@@ -10,10 +10,10 @@ on:
       test-type:
         type: choice
         description: Which tests
-        default: component, integration
+        default: component,integration
         options:
           - all
-          - component, integration
+          - component,integration
         required: true
 
 jobs:
