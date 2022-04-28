@@ -2,8 +2,8 @@ name: Trigger Component Tests
 
 on:
   #push:
-  schedule:
-    - cron: '0 12 * * *'
+  #schedule:
+  #  - cron: '0 12 * * *'
   #repository_dispatch:
   workflow_dispatch:
     inputs:
